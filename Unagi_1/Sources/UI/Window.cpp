@@ -67,6 +67,7 @@ namespace UI
         glfwSetFramebufferSizeCallback(m_windowPtr, framebuffer_size_callback);
 
         glewExperimental = GL_TRUE;
+        
         GLenum err = glewInit();
         if(GLEW_OK!=err)
         {

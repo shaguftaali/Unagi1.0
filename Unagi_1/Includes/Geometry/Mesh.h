@@ -2,13 +2,14 @@
 #include <vector>
 #include "../Maths/Vector3.h"
 #include "../Maths/Vector2.h"
+#include "HalfEdgeMesh.h"
 
 
 using namespace std;
 
 namespace Geometry
 {
-    struct MeshFilter
+    struct RendererMeshData
     {
         std::vector<Vector3>     m_VertexPos;
         std::vector<Vector3>     m_VertexNormal;
@@ -37,12 +38,46 @@ namespace Geometry
         explicit Mesh(Mesh* aMesh);
         ~Mesh();
 
+        void            SetPosition(Index at, const Vector3& a_Position);
+        void            SetColor(Index at, const Vector3& a_Color);
+        void            SetNormal(Index at, const Vector3& a_Normal);
+        void            SetUV(Index at, const Vector2& a_TexCoord);
+
+
+        void            SetPosition(vector<Vector3> a_Position);
+        void            SetColor(vector<Vector3> a_Color);
+        void            SetColor(Vector3 a_color);
+        void            SetNormal(vector<Vector3> a_Normal);
+        void            SetUV(vector<Vector2> a_TexCoord);
+
+
+        void            BuildHalfEdgeMesh();
+        void            SetFaceData(vector<vector<Index>> a_Face);
+                   
+
     protected:
         virtual void    InitMesh();
-        virtual  void   SetVeritices();
-        virtual  void   SetNormals();
-        virtual  void   SetIndices();
+        virtual  void   InitVeritices();
+        virtual  void   InitNormals();
+        virtual  void   InitIndices();
 
+    public:
+
+        bool m_IsDirty;
+        bool m_IsStatic;
+
+
+        Index                   m_NumOfVert;
+
+        vector<Vector3>         m_vertexPos;
+        vector<vector<Index>>   m_faces;
+
+
+        RendererMeshData        renderMeshData;
+        HalfEdgeMesh            halfEdgeMesh;
+
+
+        void    UpdateRenderMeshData();
 
     };
 }

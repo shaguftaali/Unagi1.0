@@ -24,5 +24,23 @@ namespace  Geometry
     class HalfEdgeElement
     {
         
+    public:
+        HalfEdge * getHalfEdge();
+
+        Vertex* getVertex();
+
+        Edge* getEdge();
+
+        Face* getFace();
+
+        virtual ~HalfEdgeElement();
+
+    protected:
+        list<HalfEdge> halfEdge;
+        list<Vertex> vertices;
+        list<Edge> edges;
+        list<Face> faces;
+        list<Face> boundaries;
     };
+
 }

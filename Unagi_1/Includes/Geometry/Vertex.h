@@ -1,6 +1,5 @@
 #pragma once
 #include "HalfEdgeElement.h"
-#include "HalfEdge.h"
 #include "TypeDef.h"
 #include "../Maths/Matrix4.h"
 
@@ -15,6 +14,7 @@ namespace Geometry
         //EdgeIter
 
     public:
+
         /**
         * returns halfedge rooted at this vertex (reference)
         */

@@ -1,4 +1,6 @@
 #include "..\..\Includes\Geometry\HalfEdgeMesh.h"
+#include "..\..\Includes/Geometry/HalfEdge.h"
+#include "..\..\Includes/Geometry/Vertex.h"
 #include <map>
 #include "../../Includes/Geometry/TypeDef.h"
 #include <iostream>

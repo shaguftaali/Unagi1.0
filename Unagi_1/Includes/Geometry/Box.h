@@ -17,8 +17,8 @@ namespace Geometry
         float   m_Depth;
 
         void    InitMesh() override;
-        void    SetNormals() override;
-        void    SetVeritices() override;
-        void    SetIndices() override;
+        void    InitNormals() override;
+        void    InitVeritices() override;
+        void    InitIndices() override;
     };
 }
