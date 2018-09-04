@@ -51,11 +51,16 @@ namespace Geometry
         void            SetUV(vector<Vector2> a_TexCoord);
 
 
+        bool            IsDirty() const;
+
+
         void            BuildHalfEdgeMesh();
         void            SetFaceData(vector<vector<Index>> a_Face);
                    
 
     protected:
+        bool            m_IsDirty;
+
         virtual void    InitMesh();
         virtual  void   InitVeritices();
         virtual  void   InitNormals();

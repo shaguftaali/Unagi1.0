@@ -34,6 +34,8 @@ namespace Geometry
         void                    SetVertexBufferNormalData(const int& offset, const size_t& size, const void* data) const;
         void                    SetVertexBufferUVData(const int& offset, const size_t& size, const void* data) const;
 
+        void                    AttachMesh(Mesh* a_Mesh);
+
     private:
         GLuint                  m_VAO;
         GLuint                  m_VBO;

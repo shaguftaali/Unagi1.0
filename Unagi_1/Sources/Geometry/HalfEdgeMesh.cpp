@@ -220,6 +220,21 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
     }
 }
 
+void Geometry::HalfEdgeMesh::GetIndexArray(vector<Index>& indices)
+{
+
+    for(FaceCIter f=facesBegin();f!=facesEnd();f++)
+    {
+        VertexCIter v0 = f->halfEdge()->vertex();
+        VertexCIter v1 = f->halfEdge()->next()->vertex();
+        VertexCIter v2 = f->halfEdge()->next()->next()->vertex();
+
+        indices.push_back(v0->id);
+        indices.push_back(v1->id);
+        indices.push_back(v2->id);
+    }
+}
+
 VertexIter Geometry::HalfEdgeMesh::newVertex()
 {
     return vertices.insert(vertices.end(),Vertex());

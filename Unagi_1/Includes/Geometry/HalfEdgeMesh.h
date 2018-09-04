@@ -27,6 +27,32 @@ namespace  Geometry
             const vector<Vector3>& vertexPositions
         );
 
+        void GetIndexArray(vector<Index>& indices);
+
+        Size nHalfEdge() const
+        {
+            return halfEdges.size();
+        }
+
+        Size nVertices() const
+        {
+            return vertices.size();
+        }
+
+        Size nEdges() const
+        {
+            return edges.size();
+        }
+
+        Size nFaces() const
+        {
+            return faces.size();
+        }
+
+        Size nBoundaries() const
+        {
+            return bounderies.size();
+        }
 
         VertexIter          newVertex();
         HalfEdgeIter        newHalfEdge();

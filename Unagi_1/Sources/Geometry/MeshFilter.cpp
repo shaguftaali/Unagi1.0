@@ -37,6 +37,35 @@ namespace Geometry
     {
         glBufferSubData(GL_ARRAY_BUFFER, sizeof(GLfloat)*(3+3+3 + offset)*m_MeshPtr->renderMeshData.m_VertexColor.size(), sizeof(GLfloat)*size * 2, data);
     }
+    void MeshFilter::AttachMesh(Mesh * a_Mesh)
+    {
+        if(m_MeshPtr!=nullptr)
+        {
+            if(m_MeshPtr->IsDirty())
+            {
+                if(m_MeshPtr->m_NumOfVert!=a_Mesh->m_NumOfVert)
+                {
+                    uint32_t numOfVert = a_Mesh->halfEdgeMesh.nVertices();
+                    m_MeshPtr->m_NumOfVert = numOfVert;
+
+                    vector<Index> updatedIndices;
+                    m_MeshPtr->halfEdgeMesh.GetIndexArray(updatedIndices);
+
+                    m_IndexCount = (uint32_t)updatedIndices.size();
+                    m_IndicesDataPtr = new GLuint[m_IndexCount];
+
+                    for (uint32_t i=0;i<m_IndexCount;i++)
+                    {
+                        m_IndicesDataPtr[i] = updatedIndices[i];
+                    }
+
+                    SetUpGLData();
+                    m_IBOPtr->AddIndexBufferData(m_IndicesDataPtr, m_IndexCount);
+                }
+            }
+        }
+        m_MeshPtr = a_Mesh;
+    }
     void MeshFilter::SetUpGLData()
     {
         InitVertexArrayBuffer();

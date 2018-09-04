@@ -65,6 +65,13 @@ namespace Geometry
     {
     }
 
+    bool Mesh::IsDirty() const
+    {
+        return IsDirty;
+    }
+
+  
+
     void Mesh::BuildHalfEdgeMesh()
     {
         halfEdgeMesh.build(m_faces, m_vertexPos);
@@ -101,6 +108,11 @@ namespace Geometry
             {
                 renderMeshData.m_VertexPos.push_back(m_vertexPos[vetexInd]);
 
+                renderMeshData.m_VertexColor.emplace_back(0.5f, 0.5f, 0.5f);
+
+                renderMeshData.m_VertexNormal.emplace_back(0.0f, 0.0f, 0.0f);
+
+                renderMeshData.m_VerticesCoord.emplace_back(0.0f, 0.0f);
                 //renderMeshData
 
                 

@@ -73,8 +73,8 @@ void Geometry::Box::InitNormals()
         Vector3(0, 0, 1),  Vector3(0, 0, 1),  Vector3(0, 0, 1),
         Vector3(0, 0, 1),  Vector3(0, 0, 1),  Vector3(0, 0, 1),
     };
-    
-    SetNormal(vertNom);
+    renderMeshData.m_VertexNormal = vertNom;
+   // SetNormal(vertNom);
 }
 
 void Geometry::Box::InitVeritices()
@@ -109,7 +109,8 @@ void Geometry::Box::InitVeritices()
         Vector3( X,-Y, Z), Vector3( X, Y, Z), Vector3(-X, Y, Z),
 
     };
-    SetPosition(vecPos);
+    m_vertexPos = vecPos;
+   // SetPosition(vecPos);
    
    
 }
@@ -135,5 +136,6 @@ void Geometry::Box::InitIndices()
         //back
         {6,7,2,2,1,6}
     };
-    SetFaceData(verIndices);
+    m_faces = verIndices;
+    //SetFaceData(verIndices);
 }
