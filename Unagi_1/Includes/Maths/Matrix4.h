@@ -21,8 +21,10 @@ class Matrix4
 	const float* operator[](int index) const;
 	static  const Matrix4 IdentityMat;
 	Matrix4 Inverse() const;
+    float elements[4 * 4];
 	private:
 		float mat[4][4];
 		void setMatrixRow(int row, const Vector4& vec4);
+        void setElements();
 };
 

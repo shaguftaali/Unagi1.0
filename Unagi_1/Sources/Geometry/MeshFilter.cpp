@@ -136,5 +136,17 @@ namespace Geometry
     }
     void MeshFilter::UpdateVertexBuffer() const
     {
+        if(m_MeshPtr->IsDirty())
+        {
+            uint32_t numOfVert = m_MeshPtr->m_NumOfVert;
+            if(numOfVert>0)
+            {
+                SetVertexBufferPositionData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexPos[0]);
+                SetVertexBufferColorData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexColor[0]);
+                SetVertexBufferNormalData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexNormal[0]);
+                SetVertexBufferUVData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VerticesCoord[0]);
+
+            }
+        }
     }
 }

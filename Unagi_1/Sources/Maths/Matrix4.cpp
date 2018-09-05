@@ -18,6 +18,7 @@ Matrix4::Matrix4()
 	setMatrixRow(1, Vector4());
 	setMatrixRow(2, Vector4());
 	setMatrixRow(3, Vector4());
+    setElements();
 }
 
 Matrix4::Matrix4(const float arg[4][4])
@@ -29,6 +30,7 @@ Matrix4::Matrix4(const float arg[4][4])
 			mat[i][j] = arg[i][j];
 		}
 	}
+    setElements();
 }
 
 Matrix4::Matrix4(const Vector4 & v1, const Vector4 & v2, const Vector4 & v3, const Vector4 & v4)
@@ -37,7 +39,7 @@ Matrix4::Matrix4(const Vector4 & v1, const Vector4 & v2, const Vector4 & v3, con
 	setMatrixRow(1, v2);
 	setMatrixRow(2, v3);
 	setMatrixRow(3, v4);
-
+    setElements();
 }
 
 Matrix4 Matrix4::Transpose()
@@ -176,4 +178,18 @@ void Matrix4::setMatrixRow(int row, const Vector4& vec4)
 	mat[row][1] = vec4.y;
 	mat[row][2] = vec4.z;
 	mat[row][3] = vec4.w;
+}
+
+void Matrix4::setElements()
+{
+    int index = 0;
+    for (int i = 0; i<4; i++)
+    {
+        for (int j = 0; j<4; j++)
+        {
+            elements[index] = mat[i][j];
+            index++;
+        }
+    }
+
 }

@@ -51,6 +51,7 @@ namespace Geometry
         void                    InitMeshData(Index& numOfVert);
         void                    InitGLBuffer(Index& numOfVert);
 
+    public:
         void                    BindVertexObject() const;
         void                    UnBindVertexOject() const;
         void                    UpdateBufferSize()  const;
