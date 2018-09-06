@@ -16,12 +16,12 @@ namespace Maths
 		return angleInRad*(180.0/PI);
 	}
 
-	typedef  Vector3 Color;
+	typedef  Vector4 Color;
 
-	static Color WHITE = Vector3(1, 1, 1);
-	static Color BLACK = Vector3(0, 0, 0);
-	static Color GRAY =  Vector3(0.5, 0.5, 0.5);
-	static Color RED =  Vector3(1, 0, 0);
-	static Color GREEAN= Vector3(0, 1, 0);
-	static Color BLUE = Vector3(0, 0, 1);
+	static Color WHITE = Vector4(1, 1, 1,1.0);
+	static Color BLACK = Vector4(0, 0, 0, 1.0);
+	static Color GRAY =  Vector4(0.5, 0.5, 0.5, 1.0);
+	static Color RED =  Vector4(1, 0, 0, 1.0);
+	static Color GREEN= Vector4(0, 1, 0, 1.0);
+	static Color BLUE = Vector4(0, 0, 1, 1.0);
 }

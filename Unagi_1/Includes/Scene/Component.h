@@ -1,7 +1,7 @@
 #pragma once
-#include "../Scene/Node.h"
 
-namespace Garphics
+
+namespace EnvironmentScene
 {
     class Node;
     enum class EComponentType
@@ -14,6 +14,7 @@ namespace Garphics
 
     class Component
     {
+    public:
         Component():
         m_IsEnable(true),
         m_Type(EComponentType::OTHER)

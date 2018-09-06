@@ -1,11 +1,12 @@
 #pragma once
 #include "../Geometry/Mesh.h"
 #include "Material.h"
-#include "Component.h"
 #include "../Camera/Camera.h"
 #include "../Geometry/MeshFilter.h"
+#include "../Scene/Component.h"
 
 using namespace Unagi;
+using namespace EnvironmentScene;
 namespace Garphics
 {
     enum class RenderMode
@@ -17,6 +18,7 @@ namespace Garphics
 
     class Renderer: public Component
     {
+    public:
         Renderer(Mesh* a_Mesh, Material* a_Material);
         Renderer(const Renderer& renderer);
         ~Renderer() override;

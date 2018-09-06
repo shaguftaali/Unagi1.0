@@ -71,7 +71,11 @@ namespace Garphics
     }
     void Renderer::SendMaterialData()
     {
-        //m_Material.GetShader()->SetUniform4f("")
+        m_Material.GetShader()->SetUniform4f("material.ambient", m_Material.m_Ambient);
+        m_Material.GetShader()->SetUniform4f("material.diffuse", m_Material.m_Diffuse);
+        m_Material.GetShader()->SetUniform4f("material.specular", m_Material.m_Specular);
+        m_Material.GetShader()->SetUniform4f("material.emission", m_Material.m_Emission);
+        m_Material.GetShader()->SetUniform1f("material.shininess", m_Material.m_Shininess);
     }
     Material & Renderer::GetMaterial()
     {
