@@ -14,6 +14,23 @@ using namespace std;
  * each vector<Index> represent's one face with its vertices list
  */
 
+//const HalfEdgeMesh & Geometry::HalfEdgeMesh::operator=(const HalfEdgeMesh & mesh)
+//{
+//    // TODO: insert return statement here
+//    halfEdges.clear();
+//    vertices.clear();
+//    edges.clear();
+//    faces.clear();
+//    bounderies.clear();
+//
+//    return *this;
+//}
+
+Geometry::HalfEdgeMesh::HalfEdgeMesh(const HalfEdgeMesh & mesh)
+{
+    *this = mesh;
+}
+
 void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const vector<Vector3>& vertexPositions)
 {
 
@@ -59,7 +76,7 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
             if(indexToVertex.find(*i)==indexToVertex.end())
             {
                 VertexIter v = newVertex();
-                v->halfEdge() = halfEdges.end();
+                v->halfedge() = halfEdges.end();
                 indexToVertex[*i] = v;
                 vertexDegree[v] = 1;
             }
@@ -73,13 +90,13 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
         Size degree = f->size();            //number of vertices in a face
         if(faceIndicesSet.size()<degree)
         {
-            cerr << "Error converting polygons to halfedge mesh: one of the input polygons does not have distinct vertices!" << endl;
-            cerr << "(vertex indices:";
-            for (IndexListCIter i = p->begin(); i != p->end(); i++)
+         //   cerr << "Error converting polygons to halfedge mesh: one of the input polygons does not have distinct vertices!" << endl;
+          //  cerr << "(vertex indices:";
+            for (IndexListCIter i = f->begin(); i != f->end(); i++)
             {
-                cerr << " " << *i;
+            //    cerr << " " << *i;
             }
-            cerr << ")" << endl;
+         //   cerr << ")" << endl;
             exit(1);
         }
 
@@ -181,7 +198,7 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
         HalfEdgeIter h = v->halfedge();
         do
         {
-            if(!h->face()->sBoundary())
+            if(!h->face()->isBoundary())
             {
                 count++;
             }
@@ -225,9 +242,9 @@ void Geometry::HalfEdgeMesh::GetIndexArray(vector<Index>& indices)
 
     for(FaceCIter f=facesBegin();f!=facesEnd();f++)
     {
-        VertexCIter v0 = f->halfEdge()->vertex();
-        VertexCIter v1 = f->halfEdge()->next()->vertex();
-        VertexCIter v2 = f->halfEdge()->next()->next()->vertex();
+       const  VertexCIter v0 = f->halfEdge()->vertex();
+       const  VertexCIter v1 = f->halfEdge()->next()->vertex();
+       const VertexCIter v2 = f->halfEdge()->next()->next()->vertex();
 
         indices.push_back(v0->id);
         indices.push_back(v1->id);
@@ -235,17 +252,37 @@ void Geometry::HalfEdgeMesh::GetIndexArray(vector<Index>& indices)
     }
 }
 
-VertexIter Geometry::HalfEdgeMesh::newVertex()
-{
-    return vertices.insert(vertices.end(),Vertex());
-}
-
-FaceIter Geometry::HalfEdgeMesh::facesBegin()
-{
-    return faces.begin();
-}
-
-FaceIter Geometry::HalfEdgeMesh::facesEnd()
-{
-    return faces.end();
-}
+//VertexIter Geometry::HalfEdgeMesh::newVertex()
+//{
+//    return vertices.insert(vertices.end(),Vertex());
+//}
+//
+//HalfEdgeIter Geometry::HalfEdgeMesh::newHalfEdge()
+//{
+//    return halfEdges.insert(halfEdges.end(),HalfEdge());
+//}
+//
+//EdgeIter Geometry::HalfEdgeMesh::newEdge()
+//{
+//    return edges.insert(edges.end(),Edge());
+//}
+//
+//HalfEdgeIter Geometry::HalfEdgeMesh::halfEdgesBegin()
+//{
+//    return HalfEdgeIter();
+//}
+//
+//HalfEdgeIter Geometry::HalfEdgeMesh::halfEdgesEnd()
+//{
+//    return HalfEdgeIter();
+//}
+//
+//FaceIter Geometry::HalfEdgeMesh::facesBegin()
+//{
+//    return faces.begin();
+//}
+//
+//FaceIter Geometry::HalfEdgeMesh::facesEnd()
+//{
+//    return faces.end();
+//}

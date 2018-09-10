@@ -16,9 +16,9 @@ namespace  Geometry
     class HalfEdgeMesh
     {
     public:
-        HalfEdgeMesh();
+        HalfEdgeMesh(){}
 
-        const HalfEdgeMesh& operator=(const HalfEdgeMesh& mesh);
+   //     const HalfEdgeMesh& operator=(const HalfEdgeMesh& mesh);
 
         HalfEdgeMesh(const HalfEdgeMesh& mesh);
 
@@ -54,21 +54,21 @@ namespace  Geometry
             return bounderies.size();
         }
 
-        VertexIter          newVertex();
-        HalfEdgeIter        newHalfEdge();
-        EdgeIter            newEdge();
+        VertexIter          newVertex() { return vertices.insert(vertices.end(), Vertex()); }
+        HalfEdgeIter        newHalfEdge(){ return  halfEdges.insert(halfEdges.end(), HalfEdge()); }
+        EdgeIter            newEdge() { return edges.insert(edges.end(), Edge()); }
 
 
-        HalfEdgeIter        halfEdgesBegin();
-        HalfEdgeIter        halfEdgesEnd();
-        VertexIter          verticesBegin();
-        VertexIter          verticesEnd();
-        EdgeIter            edgesBegin();
-        EdgeIter            edgesEnd();
-        FaceIter            facesBegin();
-        FaceIter            facesEnd();
-        FaceIter            boudariesBegin();
-        FaceIter            boudariesEnd();
+        HalfEdgeIter        halfEdgesBegin() { return halfEdges.begin(); }
+        HalfEdgeIter        halfEdgesEnd() { return  halfEdges.end(); }
+        VertexIter          verticesBegin() { return vertices.begin(); }
+        VertexIter          verticesEnd() { return  vertices.end(); }
+        EdgeIter            edgesBegin() { return  edges.begin(); }
+        EdgeIter            edgesEnd() { return  edges.end(); }
+        FaceIter            facesBegin() { return faces.begin(); }
+        FaceIter            facesEnd() { return faces.end(); }
+        FaceIter            boudariesBegin() { return  bounderies.begin(); }
+        FaceIter            boudariesEnd() { return  bounderies.end(); }
 
 
     protected:

@@ -124,6 +124,8 @@ Matrix4 operator*(const Matrix4 & mat1, const Matrix4 & mat2)
 	return mat4;
 }
 
+
+
 Vector4 operator*(const Matrix4 & mat1, const Vector4 & B)
 {
 	Vector4 vec4;

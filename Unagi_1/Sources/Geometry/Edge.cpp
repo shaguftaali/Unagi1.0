@@ -1,6 +1,5 @@
-#include "Edge.h"
-#include "HalfEdge.h"
-
+#include "../../Includes/Geometry/HalfEdge.h"
+#include "../../Includes/Geometry/Edge.h"
 
 
 namespace  Geometry

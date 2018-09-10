@@ -92,7 +92,7 @@ namespace Geometry
         m_IndexCount = (uint32_t)updatedIndices.size();
         m_IndicesDataPtr = new GLuint[m_IndexCount];
 
-        for(uint32_t i;i<m_IndexCount;i++)
+        for(uint32_t i=0;i<m_IndexCount;i++)
         {
             m_IndicesDataPtr[i] = updatedIndices[i];
         }
@@ -126,7 +126,7 @@ namespace Geometry
     void MeshFilter::BindVertexObject() const
     {
         glBindVertexArray(m_VAO);
-        glBindBuffer(m_VBO);
+        glBindBuffer(GL_ARRAY_BUFFER,m_VBO);
     }
     void MeshFilter::UnBindVertexOject() const
     {

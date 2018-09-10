@@ -37,6 +37,10 @@ Unagi::Camera::Camera(float camFov, float _aspectratio, float camNear, float cam
     m_Up = Vector3(0, 1, 0);
 }
 
+Unagi::Camera::~Camera()
+{
+}
+
 void Unagi::Camera::SetFrustrum(float camFov, float aspectRatio, float camNear, float camFar)
 {
     m_FOV = camFov;
@@ -61,7 +65,7 @@ Matrix4 Unagi::Camera::Prespective(float fov, float aspectRatio, float near, flo
         Vector4(1 /(m_AspectRatio* tanf(radian / 2)), 0, 0, 0),
         Vector4(0, 1 / tanf(radian / 2), 0, 0),
         Vector4(0, 0, A, -1),
-        Vector4(0, 0, B, 0),
+        Vector4(0, 0, B, 0)
     );
     return projectionMat;
 }

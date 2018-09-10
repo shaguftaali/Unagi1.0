@@ -80,10 +80,11 @@ namespace Garphics
     Material & Renderer::GetMaterial()
     {
         // TODO: insert return statement here
+        return m_Material;
     }
     Mesh * Renderer::GetMesh()
     {
-        return nullptr;
+        return &m_Mesh;
     }
     MeshFilter * Renderer::GetMeshFilter()
     {

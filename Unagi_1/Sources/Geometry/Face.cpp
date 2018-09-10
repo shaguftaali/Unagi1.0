@@ -1,4 +1,5 @@
-#include "Face.h"
+#include "../../Includes/Geometry/Face.h"
+#include "../../Includes/Scene/Scene.h"
 
 //returns the number of edges (or equivalently, vertices) of this face
 Size Geometry::Face::degree() const

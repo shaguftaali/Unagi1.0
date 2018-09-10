@@ -1,5 +1,5 @@
-#include "HalfEdgeElement.h"
-#include "HalfEdge.h"
+#include "../../Includes/Geometry/HalfEdgeElement.h"
+#include "../../Includes/Geometry/HalfEdge.h"
 
 namespace  Geometry
 {
@@ -22,6 +22,10 @@ namespace  Geometry
     Face * HalfEdgeElement::getFace()
     {
         return dynamic_cast<Face*>(this);
+    }
+
+    HalfEdgeElement::~HalfEdgeElement()
+    {
     }
 
 }

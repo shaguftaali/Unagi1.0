@@ -67,7 +67,7 @@ namespace Geometry
 
     bool Mesh::IsDirty() const
     {
-        return IsDirty;
+        return m_IsDirty;
     }
 
   

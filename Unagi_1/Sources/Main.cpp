@@ -1,5 +1,6 @@
 
-
+#include <GL/glew.h>
+#include "GLFW/glfw3.h"
 #include "../Includes/UI/Window.h"
 #include "../Includes/EventSystem/InputSystem.h"
 #include "../Includes/Geometry/Box.h"

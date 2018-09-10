@@ -12,7 +12,7 @@ namespace  Unagi
         Camera();
         Camera(const Vector3& pos, const Vector3& _target, const Vector3& up);
         Camera(float camFov, float _aspestratio, float camNear, float camFar);
-        Camera(Camera& cam);
+     //   Camera(Camera& cam);
         ~Camera();
 
 

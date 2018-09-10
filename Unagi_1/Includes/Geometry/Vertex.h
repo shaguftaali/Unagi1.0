@@ -2,6 +2,7 @@
 #include "HalfEdgeElement.h"
 #include "TypeDef.h"
 #include "../Maths/Matrix4.h"
+#include "HalfEdge.h"
 
 
 namespace Geometry

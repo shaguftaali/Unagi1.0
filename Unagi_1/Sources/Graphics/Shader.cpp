@@ -117,7 +117,7 @@ namespace Garphics
         {
             GLenum glType;
             glGetActiveUniform(shaderID, i, sizeof(buffer), 0, &m_Uniforms[i].size, &glType, buffer);
-            m_Uniforms[i].n = std::string(buffer);
+            m_Uniforms[i].name = std::string(buffer);
             // TODO think of clean way to manage type conversions of OpenGL and custom type
             // TODO This method will not get the name for uniform location if its a struct or array.
             //m_Uniforms[i].Type = SHADER_TYPE_BOOL;

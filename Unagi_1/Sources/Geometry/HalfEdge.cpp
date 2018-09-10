@@ -1,4 +1,5 @@
-#include "HalfEdge.h"
+
+#include "../../Includes/Geometry/HalfEdge.h"
 
 
 namespace  Geometry

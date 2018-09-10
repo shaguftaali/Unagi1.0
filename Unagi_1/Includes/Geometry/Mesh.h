@@ -36,13 +36,13 @@ namespace Geometry
         Mesh();
         Mesh(vector<Vector3>aPos, vector<vector<Index>>aFace);
         explicit Mesh(Mesh* aMesh);
-        ~Mesh();
+        virtual ~Mesh();
 
-        void            SetPosition(Index at, const Vector3& a_Position);
+     /*   void            SetPosition(Index at, const Vector3& a_Position);
         void            SetColor(Index at, const Vector3& a_Color);
         void            SetNormal(Index at, const Vector3& a_Normal);
         void            SetUV(Index at, const Vector2& a_TexCoord);
-
+*/
 
         void            SetPosition(vector<Vector3> a_Position);
         void            SetColor(vector<Vector3> a_Color);
@@ -68,7 +68,7 @@ namespace Geometry
 
     public:
 
-        bool m_IsDirty;
+       // bool m_IsDirty;
         bool m_IsStatic;
 
 

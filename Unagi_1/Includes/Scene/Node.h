@@ -29,7 +29,7 @@ namespace EnvironmentScene
 
         void                     SetParent(Node* parentNode);
         void                     SetPosition(float x, float y, float z);
-        void                     SetPosition(Vector3 a_pos);
+        void                     SetPosition(const Vector3& a_pos);
         void                     SetLocalScale(float x, float y, float z);
         void                     SetLocalEulerAngle(float x, float y, float z);
         void                     SetRotation(float angle, Vector3 axis);
@@ -51,7 +51,7 @@ namespace EnvironmentScene
         template <typename T>
         T* GetComponent()
         {
-            for (auto m_Component :m_Component )
+            for (auto m_Component : m_ComponentPtr)
             {
                 if(dynamic_cast<T*>(m_Component))
                 {

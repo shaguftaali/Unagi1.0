@@ -27,6 +27,8 @@ namespace  Geometry
 
         Vector3 centroid() const;
 
+        Index id;
+
     protected:
         HalfEdgeIter _halfEdfe;
         bool _isBoundary;

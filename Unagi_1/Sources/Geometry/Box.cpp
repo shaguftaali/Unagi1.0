@@ -27,7 +27,7 @@ m_width(width),
 m_height(height),
 m_Depth(depth)
 {
-    InitMesh();
+   Box::InitMesh();
     BuildHalfEdgeMesh();
     UpdateRenderMeshData();
 }

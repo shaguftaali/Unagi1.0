@@ -51,13 +51,17 @@ namespace EnvironmentScene
     void Node::SetPosition(float x, float y, float z)
     {
         m_Transform.m_LocalPosition = Vector3(x, y, z);
-        m_Transform.isDir
+        m_Transform.isDirty = true;
     }
-    void Node::SetPosition(Vector3 a_pos)
+    void Node::SetPosition(const Vector3& a_pos)
     {
+        m_Transform.m_LocalPosition = a_pos;
+        m_Transform.isDirty = true;
     }
     void Node::SetLocalScale(float x, float y, float z)
     {
+        m_Transform.m_EulerAngle = Vector3(x, y, z);
+        //m_Transform.m_Rotation=ToQ
     }
     void Node::SetLocalEulerAngle(float x, float y, float z)
     {

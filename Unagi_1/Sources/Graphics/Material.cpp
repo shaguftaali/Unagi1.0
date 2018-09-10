@@ -13,6 +13,9 @@ namespace Garphics
     {
         m_ShaderPtr = a_Shader;
     }
+    Material::~Material()
+    {
+    }
     void Garphics::Material::AttachShader(Shader * a_Shader)
     {
         m_ShaderPtr = a_Shader;

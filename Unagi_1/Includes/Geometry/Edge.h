@@ -9,7 +9,7 @@ namespace  Geometry
     class  Edge:public HalfEdgeElement
     {
     public:
-        HalfEdgeIter& halfEdge(){  return _halfEdge.;    }
+        HalfEdgeIter& halfEdge(){  return _halfEdge;    }
 
         HalfEdgeCIter  halfedge() const { return _halfEdge; }
 

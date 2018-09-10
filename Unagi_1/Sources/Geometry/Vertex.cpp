@@ -1,4 +1,5 @@
-#include "Vertex.h"
+
+#include "../../Includes/Geometry/Vertex.h"
 
 bool Geometry::Vertex::isBoundary(void) const
 {
