@@ -90,13 +90,13 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
         Size degree = f->size();            //number of vertices in a face
         if(faceIndicesSet.size()<degree)
         {
-         //   cerr << "Error converting polygons to halfedge mesh: one of the input polygons does not have distinct vertices!" << endl;
-          //  cerr << "(vertex indices:";
+            cerr << "Error converting polygons to halfedge mesh: one of the input polygons does not have distinct vertices!" << endl;
+           cerr << "(vertex indices:";
             for (IndexListCIter i = f->begin(); i != f->end(); i++)
             {
-            //    cerr << " " << *i;
+                cerr << " " << *i;
             }
-         //   cerr << ")" << endl;
+            cerr << ")" << endl;
             exit(1);
         }
 

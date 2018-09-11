@@ -6,9 +6,9 @@ m_width(1.0f),
 m_height(1.0f),
 m_Depth(1.0f)
 {
-    InitMesh();
+    Box::InitMesh();
     BuildHalfEdgeMesh();
-    UpdateRenderMeshData();
+   // UpdateRenderMeshData();
 }
 
 Geometry::Box::Box(Box & a_Box):
@@ -17,9 +17,9 @@ m_width(a_Box.m_width),
 m_height(a_Box.m_height),
 m_Depth(a_Box.m_Depth)
 {
-    InitMesh();
-    BuildHalfEdgeMesh();
-    UpdateRenderMeshData();
+   Box::InitMesh();
+   // BuildHalfEdgeMesh();
+  //  UpdateRenderMeshData();
 }
 
 Geometry::Box::Box(float width, float height, float depth):
@@ -82,32 +82,44 @@ void Geometry::Box::InitVeritices()
     float X = m_width / 2.0;
     float Y = m_height / 2.0f;
     float Z = m_Depth / 2.0f;
+    //std::vector<Vector3> vecPos{
+    //    //right
+    //    Vector3( X, Y,-Z), Vector3( X, Y, Z), Vector3( X,-Y, Z),
+    //    Vector3( X,-Y, Z), Vector3( X,-Y,-Z), Vector3( X, Y,-Z),
+
+    //    //front
+    //    Vector3( X, Y,-Z), Vector3( X,-Y,-Z), Vector3(-X,-Y,-Z),
+    //    Vector3(-X,-Y,-Z), Vector3(-X, Y,-Z), Vector3( X, Y,-Z),
+
+    //    //left
+    //    Vector3(-X, Y,-Z), Vector3(-X,-Y,-Z), Vector3(-X,-Y, Z),
+    //    Vector3(-X,-Y, Z), Vector3(-X, Y, Z), Vector3(-X, Y,-Z),
+
+    //    //bottom
+    //    Vector3(-X, Y, Z), Vector3( X, Y, Z), Vector3( X, Y,-Z),
+    //    Vector3( X, Y,-Z), Vector3(-X, Y,-Z), Vector3(-X, Y, Z),
+
+    //    //top
+    //    Vector3( X,-Y, Z), Vector3(-X,-Y, Z), Vector3(-X,-Y,-Z),
+    //    Vector3(-X,-Y,-Z), Vector3( X,-Y,-Z), Vector3( X,-Y, Z),
+
+
+    //    //back
+    //    Vector3(-X, Y, Z), Vector3(-X,-Y, Z), Vector3( X,-Y, Z),
+    //    Vector3( X,-Y, Z), Vector3( X, Y, Z), Vector3(-X, Y, Z),
+
+    //};
+
     std::vector<Vector3> vecPos{
-        //right
-        Vector3( X, Y,-Z), Vector3( X, Y, Z), Vector3( X,-Y, Z),
-        Vector3( X,-Y, Z), Vector3( X,-Y,-Z), Vector3( X, Y,-Z),
-
-        //front
-        Vector3( X, Y,-Z), Vector3( X,-Y,-Z), Vector3(-X,-Y,-Z),
-        Vector3(-X,-Y,-Z), Vector3(-X, Y,-Z), Vector3( X, Y,-Z),
-
-        //left
-        Vector3(-X, Y,-Z), Vector3(-X,-Y,-Z), Vector3(-X,-Y, Z),
-        Vector3(-X,-Y, Z), Vector3(-X, Y, Z), Vector3(-X, Y,-Z),
-
-        //bottom
-        Vector3(-X, Y, Z), Vector3( X, Y, Z), Vector3( X, Y,-Z),
-        Vector3( X, Y,-Z), Vector3(-X, Y,-Z), Vector3(-X, Y, Z),
-
-        //top
-        Vector3( X,-Y, Z), Vector3(-X,-Y, Z), Vector3(-X,-Y,-Z),
-        Vector3(-X,-Y,-Z), Vector3( X,-Y,-Z), Vector3( X,-Y, Z),
-
-
-        //back
-        Vector3(-X, Y, Z), Vector3(-X,-Y, Z), Vector3( X,-Y, Z),
-        Vector3( X,-Y, Z), Vector3( X, Y, Z), Vector3(-X, Y, Z),
-
+       Vector3(-X,  Y, -Z),
+       Vector3(-X, -Y, -Z),
+       Vector3(X, -Y, -Z),
+       Vector3(X,  Y, -Z),
+       
+       Vector3(-X,  Y,  Z),
+       Vector3(-X, -Y,  Z),
+       Vector3(X, -Y,  Z),
+       Vector3(X,  Y,  Z)
     };
     m_vertexPos = vecPos;
    // SetPosition(vecPos);
@@ -117,25 +129,35 @@ void Geometry::Box::InitVeritices()
 
 void Geometry::Box::InitIndices()
 {
-    vector<vector<Index>> verIndices{
-        //right
-        {0,1,2,2,3,0},
+    //vector<vector<Index>> verIndices{
+    //    //right
+    //    {0,1,2,2,3,0},
 
-        //front
-        {0,3,4,4,5,0},
+    //    //front
+    //    {0,3,4,4,5,0},
 
-        //left
-        {5,4,7,7,6,5},
+    //    //left
+    //    {5,4,7,7,6,5},
 
-        //bottom
-        {6,1,0,0,5,6},
+    //    //bottom
+    //    {6,1,0,0,5,6},
 
-        //top
-        {2,7,4,4,3,2},
+    //    //top
+    //    {2,7,4,4,3,2},
 
-        //back
-        {6,7,2,2,1,6}
+    //    //back
+    //    {6,7,2,2,1,6}
+    //};
+
+    std::vector<std::vector<uint32_t > >verIndices{
+        { 0,   3,  2,  1 },
+    { 4,   5,  6,  7 },
+    { 4,   0,  1,  5 },
+    { 3,   7,  6,  2 },
+    { 0,   4,  7,  3 },
+    { 5,   1,  2,  6 }
     };
+
     m_faces = verIndices;
     //SetFaceData(verIndices);
 }

@@ -79,7 +79,7 @@ namespace Garphics
     }
     Material & Renderer::GetMaterial()
     {
-        // TODO: insert return statement here
+        
         return m_Material;
     }
     Mesh * Renderer::GetMesh()
@@ -88,7 +88,7 @@ namespace Garphics
     }
     MeshFilter * Renderer::GetMeshFilter()
     {
-        return nullptr;
+        return m_MeshFilterPtr;
     }
     void Renderer::SetMesh(Mesh * a_Mesh)
     {
@@ -100,6 +100,6 @@ namespace Garphics
     }
     Matrix4 Renderer::GetModelMatrix() const
     {
-        return Matrix4();
+        return m_AttachedNodePtr->GetTransformComponent().GetWorldTransformMat();
     }
 }

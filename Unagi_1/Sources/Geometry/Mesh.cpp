@@ -84,6 +84,22 @@ namespace Geometry
         m_faces = std::move(a_Face);
     }
 
+    void Mesh::InitMesh()
+    {
+    }
+
+    void Mesh::InitVeritices()
+    {
+    }
+
+    void Mesh::InitNormals()
+    {
+    }
+
+    void Mesh::InitIndices()
+    {
+    }
+
     void Mesh::UpdateRenderMeshData()
     {
         renderMeshData.Clear();

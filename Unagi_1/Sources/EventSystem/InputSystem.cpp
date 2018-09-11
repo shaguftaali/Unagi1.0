@@ -50,7 +50,7 @@ namespace InputSystem
         double m_yPos;
         glfwGetCursorPos(window, &m_xPos, &m_yPos);
        /* std::cout << "x " << xPos << " y " << yPos << std::endl;*/
-        std::cout << "x " << m_xPos << " y " << m_yPos << std::endl;
+     //   std::cout << "x " << m_xPos << " y " << m_yPos << std::endl;
         mousePos.x = static_cast<float>(xPos);
         mousePos.y = static_cast<float>(yPos);
     }

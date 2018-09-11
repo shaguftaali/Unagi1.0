@@ -29,8 +29,8 @@ int main(int argc, char* argv[])
     cam->SetFOV(45);
 
     Box boxMesh;
-    Shader boxShader("", "");
-    Material boxMat(&boxShader);
+   // Shader boxShader("../../Unagi_1/TestShaders/solidWireframe.vs", "../../Unagi_1/TestShaders/solidWireframe.fs", "../../Unagi_1/TestShaders/solidWireframe.gs");
+   /* Material boxMat(&boxShader);
     boxMat.SetAmbient(Vector4(.5f, 0.1f, 0.1f, 1.0f));
     
     Renderer boxRenderer(&boxMesh, &boxMat);
@@ -39,20 +39,20 @@ int main(int argc, char* argv[])
     boxNodePtr->AttachComponent(&boxRenderer);
     boxNodePtr->SetLocalScale(0.25f, 0.25f, 0.25f);
     boxNodePtr->SetPosition(0.0, 2.0, 0.0);
-
-    Scene rootScene(cam);
-    rootScene.AddToScene(boxNodePtr);
+    */
+     Scene rootScene(cam);
+  //  rootScene.AddToScene(boxNodePtr);
 
     Input input(window, &rootScene);
 
     while (!window->IfWindowClosed())
     {
         window->SetBGColor(0.2f, 0.3f, 0.6f, 1.0f);
-        window->Update();
+      
 
         KeyBoardEventHandler(window, input);
 
-        rootScene.Render();
+       // rootScene.Render();
         window->Update();
     }
 

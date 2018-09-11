@@ -4,6 +4,7 @@
 #include "../Camera/Camera.h"
 #include "../Geometry/MeshFilter.h"
 #include "../Scene/Component.h"
+#include "../../Includes/Scene/Node.h"
 
 using namespace Unagi;
 using namespace EnvironmentScene;

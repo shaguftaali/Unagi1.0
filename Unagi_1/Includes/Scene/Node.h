@@ -7,7 +7,7 @@
 #include <vector>
 #include "../Maths/Vector3.h"
 #include "../Geometry/Mesh.h"
-
+#include "../../Includes/Graphics/Renderer.h"
 
 namespace EnvironmentScene
 {
@@ -15,7 +15,7 @@ namespace EnvironmentScene
     class Node
     {
     public:
-        Node(const char* name);
+       explicit  Node(const char* name);
        // Node(Transform& a_Trans, const char* name);
        // Node(const Node& node);
 
@@ -42,11 +42,12 @@ namespace EnvironmentScene
         Mesh*                    GetMesh();
 
         inline Transform&       GetTransformComponent() { return m_Transform; }
-        inline int              GetInstanceID();
+        inline int              GetInstanceID() { return m_InstanceID; }
         inline string           GetName() { return m_NodeName; }
 
         //void                    
 
+        bool                isPickable;
 
         template <typename T>
         T* GetComponent()
@@ -75,9 +76,10 @@ namespace EnvironmentScene
 
        
       
+
     public:
-        static  int uID;
-        bool                isPickable;
+        static int uID;
+        
     };
 
     typedef std::shared_ptr<Node> NodePtr;

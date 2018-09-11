@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+
 #include "../../Includes/UI/Window.h"
 
 //#include <GLFW/glfw3.h>

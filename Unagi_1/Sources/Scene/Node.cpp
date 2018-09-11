@@ -1,9 +1,11 @@
 #include "..\..\Includes\Scene\Node.h"
-#include "../../Includes/Graphics/Renderer.h"
+
 
 using namespace Garphics;
 namespace EnvironmentScene
 {
+    int Node::uID = 0;
+
     Node::Node(const char * name) :
         isPickable((true)),
         m_NodeName(name),
@@ -12,6 +14,9 @@ namespace EnvironmentScene
     {
         m_ParentNode = nullptr;
 
+    }
+    Node::~Node()
+    {
     }
     void Node::AddChild(std::shared_ptr<Node> a_node)
     {
@@ -68,5 +73,41 @@ namespace EnvironmentScene
     }
     void Node::SetRotation(float angle, Vector3 axis)
     {
+    }
+    Node * Node::GetParent()
+    {
+        return m_ParentNode;
+    }
+    uint32_t Node::GetNumberOfChilds()
+    {
+        return uint32_t();
+    }
+    std::shared_ptr<Node> Node::GetChildNodeAt(uint32_t index)
+    {
+        if (index >= m_ChildNodesPtr.size())
+            return nullptr;
+
+        return m_ChildNodesPtr[index];
+    }
+    const Transform & Node::GetWorldTransform()
+    {
+       if(m_Transform.isDirty)
+       {
+           m_Transform.UpdateLocalTransformMatrix();
+       }
+        //TODO
+       return m_Transform;
+    }
+    Mesh * Node::GetMesh()
+    {
+       if(this->HasComponent(EComponentType::RENDERER))
+       {
+           Renderer* renderer = (this->GetComponent<Renderer>());
+           if(renderer!=nullptr)
+           {
+               return renderer->GetMesh();
+           }
+       }
+       return nullptr;
     }
 }
