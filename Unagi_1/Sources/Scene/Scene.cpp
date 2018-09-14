@@ -29,11 +29,11 @@ namespace EnvironmentScene
                 Renderer* renderer = node->GetComponent<Renderer>();
                 if(renderer!=nullptr)
                 {
-                    renderer->SendViewMatrixData(m_CameraPtr->GetViewMatrix());
-                    renderer->SendProjectionMatrixData(m_CameraPtr->GetProjectionMatrix());
-                    renderer->SendModelMatrixData(node->GetTransformComponent().GetWorldTransformMat());
+               //     renderer->SendViewMatrixData(m_CameraPtr->GetViewMatrix());
+                //    renderer->SendProjectionMatrixData(m_CameraPtr->GetProjectionMatrix());
+                //    renderer->SendModelMatrixData(node->GetTransformComponent().GetWorldTransformMat());
 
-                    renderer->SendMaterialData();
+               //     renderer->SendMaterialData();
                     renderer->Render();
 
                 }

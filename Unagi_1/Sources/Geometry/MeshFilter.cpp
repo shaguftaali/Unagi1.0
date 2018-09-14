@@ -1,4 +1,5 @@
 #include "..\..\Includes\Geometry\MeshFilter.h"
+#include <iostream>
 
 namespace Geometry
 {
@@ -9,7 +10,7 @@ namespace Geometry
         {
             uint32_t vertexNumber = 0;
             InitMeshData(vertexNumber);
-            SetUpGLData();
+            SetUpGLData(vertexNumber);
             InitIndexBuffer();
         }
 
@@ -23,6 +24,7 @@ namespace Geometry
     }
     void MeshFilter::SetVertexBufferPositionData(const int & offset, const size_t & size, const void * data) const
     {
+        std::cout << "data " << data << std::endl;
         glBufferSubData(GL_ARRAY_BUFFER, sizeof(GLfloat)*(0 + offset)*m_MeshPtr->renderMeshData.m_VertexPos.size(), sizeof(GLfloat)*size * 3, data);
     }
     void MeshFilter::SetVertexBufferColorData(const int & offset, const size_t & size, const void * data) const
@@ -59,30 +61,37 @@ namespace Geometry
                         m_IndicesDataPtr[i] = updatedIndices[i];
                     }
 
-                    SetUpGLData();
+                    SetUpGLData(numOfVert);
                     m_IBOPtr->AddIndexBufferData(m_IndicesDataPtr, m_IndexCount);
                 }
             }
         }
         m_MeshPtr = a_Mesh;
     }
-    void MeshFilter::SetUpGLData()
+    void MeshFilter::SetUpGLData(uint32_t vertexNumber)
     {
         InitVertexArrayBuffer();
+        InitGLBuffer(vertexNumber);
         BindVertexObject();
         
     }
+
+
     void MeshFilter::InitIndexBuffer()
     {
         BindVertexObject();
         m_IBOPtr = new IndexBuffer(m_IndicesDataPtr, m_IndexCount);
         UnBindVertexOject();
     }
+
+
     void MeshFilter::InitVertexArrayBuffer()
     {
         glGenVertexArrays(1, &m_VAO);
         glGenBuffers(1, &m_VBO);
     }
+
+
     void MeshFilter::InitMeshData(Index & numOfVert)
     {
         numOfVert = (int)m_MeshPtr->renderMeshData.m_VertexPos.size();
@@ -97,14 +106,18 @@ namespace Geometry
             m_IndicesDataPtr[i] = updatedIndices[i];
         }
     }
+
+
     void MeshFilter::InitGLBuffer(Index & numOfVert)
     {
         if(numOfVert>0)
         {
-            SetVertexBufferPositionData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexPos[0]);
-            SetVertexBufferColorData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexColor[0]);
+      
+
+            SetVertexBufferPositionData(0, numOfVert, &(m_MeshPtr->renderMeshData.m_VertexPos[0]));
+        /*    SetVertexBufferColorData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexColor[0]);
             SetVertexBufferNormalData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VertexNormal[0]);
-            SetVertexBufferUVData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VerticesCoord[0]);
+            SetVertexBufferUVData(0, numOfVert, &m_MeshPtr->renderMeshData.m_VerticesCoord[0]);*/
         }
 
         glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
@@ -130,6 +143,8 @@ namespace Geometry
     }
     void MeshFilter::UnBindVertexOject() const
     {
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
     }
     void MeshFilter::UpdateBufferSize() const
     {

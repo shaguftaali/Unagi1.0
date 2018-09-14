@@ -140,6 +140,7 @@ void Geometry::HalfEdgeMesh::build(const vector<vector<Index>>& polygons, const 
 
                     hab->face() = faceIter;
                     hab->face()->halfEdge() = hab;
+                    
 
                     hab->vertex() = indexToVertex[a];
                     hab->vertex()->halfedge() = hab;

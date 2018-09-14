@@ -63,10 +63,11 @@ namespace Garphics
         vertex = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertex, 1, &vShaderCode, nullptr);
         glCompileShader(vertex);
-        CompileShader(shaderID, "VERTEX");
+        CompileShader(vertex, "VERTEX");
 
         fragment = glCreateShader(GL_FRAGMENT_SHADER);
         glShaderSource(fragment, 1, &fShaderCode, nullptr);
+        glCompileShader(fragment);
         CompileShader(fragment, "FRAGMENT");
 
         uint32_t geometry;

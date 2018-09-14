@@ -12,11 +12,11 @@ namespace  Geometry
     class HalfEdge: public HalfEdgeElement
     {
     public:
-        HalfEdgeIter twin()       { return _twin; }      ///< access the twin half edge
-        HalfEdgeIter   next()      { return _next; }      ///< access the next half edge
-        VertexIter    vertex()    { return _vertex; }    ///< access the vertex in the half edge
-        EdgeIter       edge()      { return _edge; }      ///< access the edge the half edge is on
-        FaceIter       face()      { return _face; }      ///< access the face the half edge is on
+        HalfEdgeIter& twin()       { return _twin; }      ///< access the twin half edge
+        HalfEdgeIter&   next()      { return _next; }      ///< access the next half edge
+        VertexIter&    vertex()    { return _vertex; }    ///< access the vertex in the half edge
+        EdgeIter&       edge()      { return _edge; }      ///< access the edge the half edge is on
+        FaceIter&       face()      { return _face; }      ///< access the face the half edge is on
 
         HalfEdgeCIter   twin()   const { return _twin; }        ///< access the twin half edge (const iterator)
         HalfEdgeCIter   next()   const { return _next; }        ///< access the next half edge (comst iterator)

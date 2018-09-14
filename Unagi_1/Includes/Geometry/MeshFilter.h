@@ -45,7 +45,7 @@ namespace Geometry
         GLuint*                 m_IndicesDataPtr;
         IndexBuffer*             m_IBOPtr;
 
-        void                    SetUpGLData();
+        void                    SetUpGLData(uint32_t vertexNumber);
         void                    InitIndexBuffer();
         void                    InitVertexArrayBuffer();
         void                    InitMeshData(Index& numOfVert);

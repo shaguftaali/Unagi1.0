@@ -8,7 +8,7 @@ m_Depth(1.0f)
 {
     Box::InitMesh();
     BuildHalfEdgeMesh();
-   // UpdateRenderMeshData();
+    UpdateRenderMeshData();
 }
 
 Geometry::Box::Box(Box & a_Box):
@@ -18,8 +18,8 @@ m_height(a_Box.m_height),
 m_Depth(a_Box.m_Depth)
 {
    Box::InitMesh();
-   // BuildHalfEdgeMesh();
-  //  UpdateRenderMeshData();
+   BuildHalfEdgeMesh();
+   UpdateRenderMeshData();
 }
 
 Geometry::Box::Box(float width, float height, float depth):

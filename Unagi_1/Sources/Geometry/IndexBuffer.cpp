@@ -10,7 +10,8 @@ m_IndexCount(count)
     Unbind();
 }
 
-Geometry::IndexBuffer::IndexBuffer(GLuint * data, GLuint count)
+Geometry::IndexBuffer::IndexBuffer(GLuint * data, GLuint count):
+    m_IndexCount(count)
 {
     glGenBuffers(1, &m_BufferID);
     Bind();
